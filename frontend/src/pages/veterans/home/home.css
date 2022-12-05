@@ -1,0 +1,62 @@
+#vetLine{
+   margin-top: 10px;
+   background-color: lightskyblue;
+   display: flex;
+   flex-direction: row;
+   height: 50px;
+   text-align: center;
+}
+#vetLine > h3{
+    margin-left: 30px;
+    margin-top: 10px;
+    color: white;
+ }
+ #vetLine > form >input{
+    margin-left: 300px;
+    width: 400px;
+    height: 20px;
+    margin-top: 13px;
+ }
+ #vetLine > button{
+    margin-left: 30px;
+    background-color: lightskyblue;
+    color: white;
+    font-weight: bold;
+    border: none;
+ }
+ #user{
+    width: 50px;
+    height: 45px;
+    margin-top: 3px;
+    border-radius: 100%;
+    margin-left:90px;
+ }
+ #bodydiv{
+   width: 60%;
+   margin: auto;
+   display: block;
+ }
+ #post{
+   margin-top: 10px;
+   padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid silver;
+   
+ }
+ #post > form > input{
+   margin-top: 15px;
+   outline: none;
+   border: none;
+   width: 300px;
+   margin-left: 20px;
+
+ }
+ #user1{
+   width: 50px;
+   height: 45px;
+   border-radius: 100%;
+}
+#body{
+   background-color: lightblue;
+}

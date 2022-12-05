@@ -1,0 +1,28 @@
+#loginDiv{
+    display: flex;
+    flex-direction: row;
+    margin-top: 150px;
+}
+#logImg{
+    width: 500px;
+    height: 300px;
+}
+#formDiv{
+ margin-left: 10px;
+ display: flex;
+ flex-direction: column;
+}
+#formDiv > input{
+    width: 300px;
+    height: 35px;
+    margin-top: 20px;
+}
+#formDiv > button{
+    width: 150px;
+    height: 35px;
+    margin-left: 80px;
+    margin-top: 20px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+}

@@ -1,0 +1,40 @@
+#form1{
+    height:35px;
+    width:300px;
+    border-radius: 10px;
+}
+#form2{
+    height:35px;
+    width:300px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+#form3{
+    height:35px;
+    width:300px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#form4{
+    height:35px;
+    width:300px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+#firstdiv{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+input::placeholder{
+    padding-left: 20px;
+    font-size: 15px;
+}
+#loadedImg{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-left: 100px;
+    margin-top: 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,12 @@
+#Usercard{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    border: 2px solid silver;
+    width: 100%;
+    margin-top: 20px;
+}
+#Usercard > img{
+    width: 250px;
+    height: 150px;
+}

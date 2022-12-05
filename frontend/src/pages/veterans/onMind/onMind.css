@@ -1,0 +1,14 @@
+#mindCont{
+    width: 500px;
+    display: block;
+    margin: auto;
+}
+#insideDiv{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+/* #inp::placeholder{
+  padding-bottom: 200px;
+} */
