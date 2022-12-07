@@ -60,7 +60,6 @@ function InviteVets(props){
         setUpdatedUser(response.data)
         window.location.reload()
     }
-
   return(
    <>
       <div>

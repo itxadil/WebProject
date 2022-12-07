@@ -1,0 +1,15 @@
+#main_div{
+    width: 500px;
+    background-color: skyblue;
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+#profimg{
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}

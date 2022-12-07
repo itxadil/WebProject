@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./event.css"
+import "./createve.css"
 import {useHistory} from "react-router-dom"
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
@@ -7,14 +7,14 @@ import axios from "axios"
 import Calendar from 'react-calendar';
 import Select from 'react-select'
 import 'react-calendar/dist/Calendar.css';
-function CreateEvent(){
+function CreateVEvent(){
 
     const [userinfo,setUserInfo]=useState({})
 
     useEffect(()=>{
         const getallstudents=async()=>{
-            const user=window.localStorage.getItem('orgEmail')
-            const response= await axios.get(`http://localhost:4300/community/${user}`)
+            const user=window.localStorage.getItem('userEmail')
+            const response= await axios.get(`http://localhost:4300/veteran/${user}`)
             setUserInfo(response.data)
         }
         getallstudents()
@@ -74,7 +74,7 @@ function CreateEvent(){
         contact:contact,
         date:date,
         time:time,
-        organization:userinfo.name,
+        organizer:userinfo.email,
         stars:stars
       }
     const options={
@@ -105,9 +105,10 @@ function CreateEvent(){
       setFlag(!flag)
       }
        const registerUser=async()=>{
-            fetch("http://localhost:4300/postcommunityEvent",options).then((response)=>console.log("Response",response))
-            history.push("/community")   
+            fetch("http://localhost:4300/postevent",options).then((response)=>console.log("Response",response))
+            history.push("/")   
         }
+        console.log(stars)
     return(
     <>
        <div className="signup-form">
@@ -159,4 +160,4 @@ function CreateEvent(){
     </>
     );
 }
-export default CreateEvent
+export default CreateVEvent

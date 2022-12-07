@@ -158,10 +158,9 @@ function RegisterOrg() {
         console.log(response)
         history.push('/communitylog')
       }
-    }
-    
+    }    
   return (
-    <div style={{ width:'1000px', backgroundColor:'silver',margin:'auto',display:'block' }}>
+    <div style={{ width:'1000px', backgroundColor:'silver',margin:'auto',display:'block', marginTop:'20px' }}>
           <input type="file" id="selectedImg1" style={{display: 'none'}} onChange={showFile} />
     <MDBContainer fluid style={{dispaly:'flex', flexDirection:'row'}}>
       <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
@@ -230,7 +229,7 @@ function RegisterOrg() {
               lg="6"
               className="order-1 order-lg-2 d-flex align-items-center"
             >
-              <MDBCardImage style={{width:'500px', height:'700px', marginLeft:'45%',marginTop:'-58%', marginBottom:'10px'}}
+              <MDBCardImage style={{width:'500px', height:'700px', marginLeft:'45%', marginBottom:'10px'}}
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                 fluid
               />

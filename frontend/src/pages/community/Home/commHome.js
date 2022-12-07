@@ -55,7 +55,7 @@ function CommHome(props){
         <button onClick={findF}>Find Followers</button>
         <button>All Events</button>
         <button onClick={createEvent}>Create event</button>
-        <button onClick={allvets}>All veterans</button>
+        <button onClick={allvets}>My events</button>
         <button>All community service</button>
         <img id="user" src={userData.photoUrl} />
       </div>

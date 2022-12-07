@@ -8,7 +8,9 @@ const vetranSchema=new mongoose.Schema({
     password:String,
     followers:Array,
     following:Array,
-    hobbies:Array
+    hobbies:Array,
+    vetType:String,
+    starcount:Number
 })
 
 const vertancollection=mongoose.model('veteran',vetranSchema)

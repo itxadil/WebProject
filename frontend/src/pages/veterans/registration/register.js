@@ -121,8 +121,8 @@ function Register() {
 		loadedimage.src=e.target.result;
     console.log(loadedimage.src)
 		loadedimage.onload = function () {
-			document.getElementById("loadedImg").src=loadedimage.src;
-      console.log(document.getElementById("loadedImg").src)
+			document.getElementById("loadedImg1").src=loadedimage.src;
+      console.log(document.getElementById("loadedImg1").src)
       setImg(loadedimage.src)
 		};
 		}     
@@ -134,7 +134,9 @@ function Register() {
       password:password,
       profession:profession,
       gender:gender,
-      hobbies:userinfo.hobbies
+      hobbies:userinfo.hobbies,
+      vetType:'',
+      starcount:0
     }
     
     const onsubmit=(e)=>{
@@ -168,19 +170,19 @@ function Register() {
     }
     
   return (
-    <div style={{ width:'1000px', backgroundColor:'silver',margin:'auto',display:'block' }}>
+    <div style={{ width:'1000px', backgroundColor:'silver',margin:'auto',display:'block', marginTop:'20px' }}>
           <input type="file" id="selectedImg" style={{display: 'none'}} onChange={showFile} />
     <MDBContainer fluid style={{dispaly:'flex', flexDirection:'row'}}>
       <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
         <MDBCardBody>
           <MDBRow>
-            <div id="firstdiv">
+            <div id="firstdiv1">
               <p style={{marginLeft:'80px', color:'black', fontWeight:'bold', fontSize:'40px'}} classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                 Sign up
               </p>
               <form onSubmit={onsubmit}>
               <div>
-              <img src={photo1} alt="preview-img" id="loadedImg" onClick={onc}></img>
+              <img src={photo1} alt="preview-img" id="loadedImg1" onClick={onc}></img>
               </div>
               <div className="d-flex flex-row align-items-center mb-4" style={{marginTop:'20px'}}>
                 <MDBIcon fas icon="user me-3" size="lg" />
@@ -188,7 +190,7 @@ function Register() {
                 value={name}
                 onChange={(e)=>setName(e.target.value)}
                   placeholder="Your Name"
-                  id="form1"
+                  id="form11"
                   type="text"
                   className="w-100"
                 />
@@ -197,13 +199,13 @@ function Register() {
 
               <div className="d-flex flex-row align-items-center mb-4">
                 <MDBIcon fas icon="envelope me-3" size="lg" />
-              <input placeholder="Your Email" id="form2" type="email" value={email}
+              <input placeholder="Your Email" id="form22" type="email" value={email}
                 onChange={(e)=>setEmail(e.target.value)} />
                 {email==='' && <p style={{color:'black', marginLeft:'5px', fontWeight:'bold'}}>{error.emailError}</p>}
               </div>
 
               <div className="d-flex flex-row align-items-center mb-4">
-                <input placeholder="Profession" id="form3" type="text" value={profession}
+                <input placeholder="Profession" id="form33" type="text" value={profession}
                 onChange={(e)=>setProfession(e.target.value)} />
                 {profession==='' && <p style={{color:'black', marginLeft:'5px', fontWeight:'bold'}}>{error.profError}</p>}
               </div>
@@ -214,7 +216,7 @@ function Register() {
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                   placeholder="Your password"
-                  id="form4"
+                  id="form44"
                   type="password"
                 />
                 {password==='' && <p style={{color:'black', marginLeft:'5px', fontWeight:'bold'}}>{error.passError}</p>}
@@ -277,7 +279,7 @@ function Register() {
               lg="6"
               className="order-1 order-lg-2 d-flex align-items-center"
             >
-              <MDBCardImage style={{width:'500px', height:'700px', marginLeft:'45%',marginTop:'-75%', marginBottom:'10px'}}
+              <MDBCardImage style={{width:'500px', height:'700px', marginLeft:'45%', marginBottom:'10px'}}
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                 fluid
               />

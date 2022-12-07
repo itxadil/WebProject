@@ -17,9 +17,9 @@ function Header(){
               <img src={photo} width="80px" id="logoimg"/>
               <div id="links">
                 <NavLink style={{fontSize:'22px' , textDecoration:'none' }} to="/" exact >Home</NavLink>
-                <NavLink style={{fontSize:'22px' , textDecoration:'none', marginLeft:'50px'}} to="/" exact >Register</NavLink>
-                <NavLink style={{fontSize:'22px' , textDecoration:'none', marginLeft:"50px" }} to="/" exact >Contact us</NavLink>
-                {window.localStorage.getItem('userEmail') && <button id="btnnnLog" onClick={onclick}>Logout</button>}
+                <NavLink style={{fontSize:'22px' , textDecoration:'none', marginLeft:'50px'}} to="/register" exact >Register</NavLink>
+                <NavLink style={{fontSize:'22px' , textDecoration:'none', marginLeft:"50px" }} to="/" exact >About us</NavLink>
+                {window.localStorage.getItem('userEmail') && <button style={{marginLeft:'30px' , width:'100px' , height:'30px', backgroundColor:'skyblue' }} id="btnnnLog" onClick={onclick}>Logout</button>}
                 {/* <NavLink to="/" exact >Home</NavLink> */}
                 </div>
             </ul>

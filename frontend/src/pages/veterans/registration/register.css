@@ -1,36 +1,40 @@
-#form1{
+#form11{
     height:35px;
     width:300px;
     border-radius: 10px;
+   
 }
-#form2{
+#form22{
     height:35px;
     width:300px;
     border-radius: 10px;
     margin-top: 20px;
 }
-#form3{
+#form33{
     height:35px;
     width:300px;
     border-radius: 10px;
     margin-top: 20px;
 }
 
-#form4{
+#form44{
     height:35px;
     width:300px;
     border-radius: 10px;
     margin-top: 20px;
 }
-#firstdiv{
+#firstdiv1{
     margin-left: 50px;
     margin-top: 50px;
+    margin:auto;
+    display: block;
 }
+
 input::placeholder{
     padding-left: 20px;
     font-size: 15px;
 }
-#loadedImg{
+#loadedImg1{
     width: 100px;
     height: 100px;
     border-radius: 100%;

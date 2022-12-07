@@ -5,6 +5,7 @@ import "./allevents.css"
 var following=[]
 var onlyfollowing=[]
 function AllEvents(){
+    const history=useHistory()
     const [events,setEvents]=useState([])
     const [updatedUser,setUpdatedUser]=useState([])
     const [flag,setFlag]=useState(false)
@@ -17,6 +18,7 @@ function AllEvents(){
         const user=window.localStorage.getItem('userEmail')
           const response=await axios.get('http://localhost:4300/events')
           const userInfo=await axios.get(`http://localhost:4300/veteran/${user}`)
+          const allEv=await axios.get(`http://localhost:4300/getvevents/${user}`)
           response.data.map((item)=>{
             if(userInfo?.data?.hobbies.includes((item.category))){
                 onlyfollowing.push(item)
@@ -30,6 +32,9 @@ function AllEvents(){
         //   response.data?.interested.forEach((item)=>{
             
         //   })
+        // allEv.data.map((item)=>{
+        //     onlyfollowing.push(item)
+        // })
           console.log("FOLLO",following)
           const user1=await axios.get(`http://localhost:4300/veteran/${user}`)
           setBeforeup(user1.data)
@@ -39,6 +44,12 @@ function AllEvents(){
     if(following.includes(window.localStorage.getItem('userEmail'))){
         console.log()
     }
+    const myevents=()=>{
+        history.push('/getmyevents')
+    }
+    const ovevents=()=>{
+        history.push('ovevents')
+    }
     const onLike=async(e)=>{
         const user=window.localStorage.getItem('userEmail')
         console.log("USSS",user)
@@ -47,6 +58,9 @@ function AllEvents(){
         console.log(response)
         setUpdatedUser(response.data)
         window.location.reload()
+        const res=await axios.get(`http://localhost:4300/addstars/${user}`)
+        console.log(res)
+        
     }
     const onremove=async(e)=>{
         const user=window.localStorage.getItem('userEmail')
@@ -54,9 +68,10 @@ function AllEvents(){
         console.log("FOL",e.target.id)
         const response=await axios.get(`http://localhost:4300/removeEvent/${user}/${e.target.id}`)
         console.log(response)
-
+        
         setUpdatedUser(response.data)
         window.location.reload()
+        const res=await axios.get(`http://localhost:4300/reducestars/${user}`)
     }
     return(
      <>
@@ -64,6 +79,8 @@ function AllEvents(){
             <div>
                 <h2 style={{display:'display', margin:'auto', width:'10%', marginTop:'20px'}}>All Events</h2>
                 <div style={{display:'block', margin:'auto', width:'60%', marginTop:'30px'}}>
+                <button style={{marginLeft:'20px', width:'200px', backgroundColor:'lightblue', height:'35px', borderRadius:'10px'}} onClick={myevents}>Show my own events</button>
+                <button style={{marginLeft:'20px', width:'200px', backgroundColor:'lightblue', height:'35px', borderRadius:'10px'}} onClick={ovevents}>Other vets events</button>
                 {onlyfollowing.map((item)=>(
                     <div style={{display:'flex', flexDirection:'row'}}>
                     <div id="Usercard2">

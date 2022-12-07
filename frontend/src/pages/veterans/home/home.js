@@ -50,7 +50,6 @@ function VHome(props){
     console.log("item.email",item.email)
         filteredList.push(item)
   })
-
   console.log("FILTERED", filteredList)
   console.log("DAAAAA", data.following)
 //  show posts of those ones who are followed by user
@@ -86,6 +85,12 @@ function VHome(props){
    const findEvents=()=>{
       history.push('/allevents')
    }
+   const onimgclick=()=>{
+    history.push({
+      pathname:"profile",
+      state:{detail:data}
+    })
+   }
     return(
       <>
       <div id="vetLine">
@@ -95,9 +100,9 @@ function VHome(props){
         </form>
         <button onClick={findF}>Find Friends</button>
         <button onClick={findEvents}>Find Events</button>
-        <button>Create event</button>
+        <button onClick={()=>history.push('/vetevents')}>Create event</button>
         <button onClick={findOr}>Join organization</button>
-        <img id="user" src={userData.photoUrl} />
+        <img id="user" src={userData.photoUrl} onClick={onimgclick}/>
       </div>
       <div id="bodydiv">
            <div id="post">
@@ -113,7 +118,7 @@ function VHome(props){
            {followedList.map((item,index)=>(
             <div style={{border:'2px solid black', backgroundColor:'silver', marginTop:'10px'}}>
            <div style={{display:'flex', flexDirection:'row', marginTop:'10px'}}>
-           <img src={item.photoUrl} style={{width:'50px', height:'50px', borderRadius:'100%'}} />
+           <img src={item.photoUrl} style={{width:'50px', height:'50px', borderRadius:'100%'}} name="profile"  />
                <div>
                   <h3 style={{marginLeft:'15px'}}>{item.userName}</h3>
                   <p style={{marginLeft:'15px'}}>{item.time}</p>

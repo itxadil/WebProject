@@ -20,6 +20,12 @@ import CreateEvent from './pages/community/createEvent/createevent';
 import AllEvents from './pages/veterans/allevents/allevents';
 import AllVets from './pages/community/allveterans/allvet';
 import InviteVets from './pages/community/inviteVets/invite';
+import CreateVEvent from './pages/veterans/createmyevent/createevent';
+import MyEvents from './pages/veterans/myEvents/myEvents';
+import InviteOVets from './pages/veterans/inviteothervets/inviteovets';
+import OVEvents from './pages/veterans/ovEvents/ovevents';
+import Profile from './pages/veterans/profile/profile';
+
 
 function App() {
   return (
@@ -35,6 +41,11 @@ function App() {
                 <Route path="/allVeterans" component={AllVeterans} />
                 <Route path="/allorganizations" component={AllOrganizations} />
                 <Route path="/allevents" component={AllEvents} />
+                <Route path="/vetevents" component={CreateVEvent} />
+                <Route path="/getmyevents" component={MyEvents} />
+                <Route path="/inviteovets" component={InviteOVets} />
+                <Route path="/ovevents" component={OVEvents} />
+                <Route path="/profile" component={Profile} />
             </Switch>
             </BrowserRouter> : 
             <BrowserRouter>
