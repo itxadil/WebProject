@@ -18,6 +18,10 @@ function Profile(props){
       <img src={props.location.state.detail.photoUrl} id="profimg"/>
       <h2>Name ➡️ <span>{props.location.state.detail.name}</span> </h2>
       <h2>Profession ➡️ <span>{props.location.state.detail.profession}</span> </h2>
+      <h2>Type ➡️ <span>{ (props.location.state.detail.starcount >=25000 && props.location.state.detail.starcount <40000) ? "Silver Veteran": (props.location.state.detail.starcount >=40000 && props.location.state.detail.starcount <50000) ? "Ruby Veteran" : 
+        (props.location.state.detail.starcount >=50000 && props.location.state.detail.starcount <60000) ? "Golden Veteran" : (props.location.state.detail.starcount >=60000 && props.location.state.detail.starcount <65000) ? "Diamond Veteran" :
+        (props.location.state.detail.starcount >=65000 && props.location.state.detail.starcount <70000) ? "Sapphire Veteran" : (props.location.state.detail.starcount >=70000 && props.location.state.detail.starcount <100000) ? "Platinum Veteran" : 
+        (props.location.state.detail.starcount ===100000) ? "Eternal Sage" : "Beginner" }</span> </h2>
       <h2>Email ➡️ <span>{props.location.state.detail.email}</span> </h2>
       <h1 style={{marginTop:'10px'}}>Hobbies</h1>
         {list.map((item)=>(
