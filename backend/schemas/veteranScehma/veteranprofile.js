@@ -10,7 +10,7 @@ const vetranSchema=new mongoose.Schema({
     following:Array,
     hobbies:Array,
     vetType:String,
-    starcount:Number
+    starcount:Number,
 })
 
 const vertancollection=mongoose.model('veteran',vetranSchema)

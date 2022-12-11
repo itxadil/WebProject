@@ -247,4 +247,52 @@ veteranRouter.get('/reducestars/:email',async(req,res)=>{
     res.send(newdata)
 })
 
+veteranRouter.get('/getinvites/:email',async(req,res)=>{
+    const user =await veventsCollection.find()
+    console.log("user",user)
+    var invited=[]
+    user.map((item)=>{
+        if(item.invited.includes(req.params.email)){
+            invited.push(item)
+        }
+    })
+    res.send(invited)
+})
+
+veteranRouter.get('/accepted/:event/:email',async(req,res)=>{
+  console.log("HITT")
+   await veventsCollection.findOneAndUpdate({name:req.params.event},{$push:{interested:req.params.email}})
+    console.log("HIT LIKE")
+    const response=await vertancollection.findOne({email:req.params.email})
+    response.starcount+=1000
+    const newdata=await vertancollection.findByIdAndUpdate({_id:response._id},{starcount:response.starcount},{new:true})
+    console.log("newdata",newdata)
+    newdata.save()
+    res.send(newdata)
+})
+
+veteranRouter.get('/rejected/:event/:email',async(req,res)=>{
+    const user=await veventsCollection.findOneAndUpdate({name:req.params.event},{$pull:{interested:req.params.email}})
+    console.log("HIT LIKE")
+    const response=await vertancollection.findOne({email:req.params.email})
+    response.starcount-=1000
+    const newdata=await vertancollection.findByIdAndUpdate({_id:response._id},{starcount:response.starcount},{new:true})
+    console.log("newdata",newdata)
+    newdata.save()
+    res.send(newdata)
+})
+
+// veteranRouter.post('/addcomment/:email/:user',async(req,res)=>{
+//     const payload={
+//         email:req.params.user,
+//         content:req.body.comment
+//     }
+//     console.log(payload)
+//     const user=await vpostCollections.findOne({email:req.params.email})
+//     const newdata=await vpostCollections.findByIdAndUpdate({_id:user._id},{$push:{comments:payload}},{new:true})
+//     newdata.save()
+//     res.send(newdata)
+// })
+
+
 module.exports=veteranRouter

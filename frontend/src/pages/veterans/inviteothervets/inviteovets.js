@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
 import "./inviteovets.css"
-var uninterested=[]
+
+function InviteOVets(props){
+    var uninterested=[]
 var updatedInterested=[]
 var withoutme=[]
-function InviteOVets(props){
     const [data,setData]=useState([])
     const [Invitations,setInvitations]=useState([])
     const [updatedUser,setUpdatedUser]=useState([])
@@ -13,11 +14,7 @@ function InviteOVets(props){
         const getUnInterested=async()=>{
         const allVets=await axios.get('http://localhost:4300/veteran')
         setData(allVets.data) 
-        allVets.data.map((item)=>{
-            if(item?.email!==window.localStorage.getItem('userEmail')){
-                withoutme.push(item)
-            }
-        })
+        
         const myEvents=await axios.get(`http://localhost:4300/getevents/${props.location.state.detail}`)
         setInvitations(myEvents.data)
        
@@ -28,6 +25,11 @@ function InviteOVets(props){
         getUnInterested()
    
     },[])
+    data.map((item)=>{
+        if(item?.email!==window.localStorage.getItem('userEmail')){
+            withoutme.push(item)
+        }
+    })
     Invitations.map((item)=>{
         for(let i=0;i<item?.invited?.length;i++){
             console.log(item.invited[i])

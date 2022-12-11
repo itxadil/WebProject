@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
 import "./allv.css"
-var sameHobbies=[]
+
 function AllVets(){
+    var sameHobbies=[]
     const [data,setData]=useState([])
     const [userInfo,setUserInfo]=useState([])
     const history=useHistory()

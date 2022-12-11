@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "./allv.css"
-var following=[]
-var exceptUser=[]
+
 function AllVeterans(){
+    var following=[]
+var exceptUser=[]
     const [veterans,setVeterans]=useState([])
     const [updatedUser,setUpdatedUser]=useState([])
     const [flag,setFlag]=useState(false)
@@ -12,29 +13,33 @@ function AllVeterans(){
     function checkown(age) {
         return age !== window.localStorage.getItem('userEmail');
       }
+      useEffect(()=>{
+        const getVeterans=async()=>{
+            
+            const response=await axios.get('http://localhost:4300/veteran')
+            console.log(response.data)
+               setVeterans(response.data)
+            }
+            getVeterans()
+      },[])
     useEffect(()=>{
         const getVeterans=async()=>{
-        const user=window.localStorage.getItem('userEmail')
-          const response=await axios.get('http://localhost:4300/veteran')
-          let newarr=response.data.filter(checkown)
-          setVeterans(newarr)
-          console.log(response.data)
-          response.data.map((item)=>{
-            if(item.email!==user){
-                exceptUser.push(item)
-            }
-          })
-          setVeterans(exceptUser)
-          const user1=await axios.get(`http://localhost:4300/veteran/${user}`)
-          user1?.data?.following.forEach((e)=>{
-            console.log("D",e)
-            following.push(e)
-          })
-        
-          setBeforeup(user1.data)
+            const user=window.localStorage.getItem('userEmail')
+            const user1=await axios.get(`http://localhost:4300/veteran/${user}`)
+            setBeforeup(user1.data)
         }
         getVeterans()
     },[])
+    beforeup?.following?.forEach((e)=>{
+        console.log("D",e)
+        following.push(e)
+      })
+    const user=window.localStorage.getItem('userEmail')
+    veterans.map((item)=>{
+        if(item.email!==user){
+            exceptUser.push(item)
+        }
+         })
     if(following.includes("adil.jamali@bentley.com")){
      console.log("HAi")
     }else{
@@ -64,7 +69,7 @@ function AllVeterans(){
             <div>
                 <h2 style={{display:'display', margin:'auto', width:'18%', marginTop:'20px'}}>People you may know</h2>
                 <div style={{display:'block', margin:'auto', width:'60%', marginTop:'30px'}}>
-                {veterans.map((item)=>(
+                {exceptUser.map((item)=>(
                     <div style={{display:'flex', flexDirection:'row'}}>
                     <div id="Usercard">
                         <img src={item?.photoUrl} />

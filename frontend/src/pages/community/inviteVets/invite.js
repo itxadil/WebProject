@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
 import "./invite.css"
-var uninterested=[]
-var updatedInterested=[]
+
 function InviteVets(props){
+    var uninterested=[]
+    var updatedInterested=[]
     const [data,setData]=useState([])
     const [Invitations,setInvitations]=useState([])
     const [updatedUser,setUpdatedUser]=useState([])

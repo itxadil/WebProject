@@ -5,62 +5,71 @@ import { useHistory } from "react-router-dom";
 import photo1 from "../../../assets/images/img.png"
 import { Player } from 'video-react';
 import photo2 from "../../../assets/images/dummyImg.jpg"
+import Moment from "react-moment";
 
 import "./home.css"
-var allpostsList=[]
-var unfollowed=[]
 
+function VHome(props){
+  var allpostsList=[]
+var unfollowed=[]
 var filteredList=[] 
 var followedList=[]
-function VHome(props){
   const history=useHistory()
     const [data,setData]=useState([])
     const [userData,setUserData]=useState({})
     const [Index,setIndex]=useState(0)
     const [posts,setPosts]=useState([])
     const [newarr,setNewArr]=useState([])
+    const [cposts,setCposts]=useState([])
     console.log("Email",window.localStorage.getItem('userEmail'))
    useEffect(()=>{
     const getdata=async()=>{
       const user=window.localStorage.getItem('userEmail')
         const response=await axios.get(`http://localhost:4300/veteran/${user}`)
-        console.log("rsp", response.data)
+        // console.log("rsp", response.data)
         setData(response.data)
         setUserData(response.data)
         const allPosts=await axios.get('http://localhost:4300/posts')
         const allCPosts=await axios.get('http://localhost:4300/cposts')
         console.log("allcposts",allCPosts.data.sort(sortFunction))
         console.log('allpostsss',allPosts.data.sort(sortFunction))
-        allPosts.data.map((item)=>{
-          if(item.email!==window.localStorage.getItem('userEmail')){
-            allpostsList.push(item)
-          }
-        })
-        allCPosts?.data.map((item)=>{
-            allpostsList.push(item)
-        })
-       allpostsList?.sort(sortFunction)
+        
+        
         setPosts(allPosts.data)
-       
+        setCposts(allCPosts.data)
+     
     }
 
     getdata()
+    
+    // posts.sort(sortFunction)
    },[])
-   allpostsList.map((item)=>{
-    console.log("item.email",item.email)
-        filteredList.push(item)
+  posts.map((item)=>{
+    if(item.email!==window.localStorage.getItem('userEmail')){
+      allpostsList.push(item)
+    }
   })
+
+   cposts.map((item)=>{
+      allpostsList.push(item)
+    })
+
+   console.log("allcpostsc",allpostsList)
+  //  console.log('allpostsssc',allPosts.data.sort(sortFunction))
+
   console.log("FILTERED", filteredList)
   console.log("DAAAAA", data.following)
 //  show posts of those ones who are followed by user
  let length=data?.following?.length
-   filteredList.map((item,index)=>{
+   allpostsList.map((item,index)=>{
     for(let i=0;i<length; i++){
       if(data.following[i]==item?.email){
         followedList.push(item)
       }
     }
    })
+
+//  followedList.sort(sortFunction)
    function sortFunction(a,b){  
     var dateA = new Date(a.date).getTime();
     var dateB = new Date(b.date).getTime();
@@ -83,7 +92,8 @@ function VHome(props){
     history.push('/allorganizations')
    }
    const findEvents=()=>{
-      history.push('/allevents')
+      history.push("/allevents")
+   
    }
    const onimgclick=()=>{
     history.push({
@@ -121,7 +131,7 @@ function VHome(props){
            <img src={item.photoUrl} style={{width:'50px', height:'50px', borderRadius:'100%'}} name="profile"  />
                <div>
                   <h3 style={{marginLeft:'15px'}}>{item.userName}</h3>
-                  <p style={{marginLeft:'15px'}}>{item.time}</p>
+                  <p style={{marginLeft:'15px'}}><Moment>{item.time}</Moment></p>
                </div>  
            </div>
            <div>

@@ -25,6 +25,10 @@ import MyEvents from './pages/veterans/myEvents/myEvents';
 import InviteOVets from './pages/veterans/inviteothervets/inviteovets';
 import OVEvents from './pages/veterans/ovEvents/ovevents';
 import Profile from './pages/veterans/profile/profile';
+import Onmap from './pages/veterans/onmap/onmap';
+import AboutVet from './pages/veterans/about/aboutus';
+import AllInvites from './pages/veterans/invites/invite';
+// import Comments from './pages/veterans/comments/comment';
 
 
 function App() {
@@ -46,6 +50,9 @@ function App() {
                 <Route path="/inviteovets" component={InviteOVets} />
                 <Route path="/ovevents" component={OVEvents} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/onmap" component={Onmap} />
+                <Route path="/aboutus" component={AboutVet} />
+                <Route path="/allinvites" component={AllInvites} />
             </Switch>
             </BrowserRouter> : 
             <BrowserRouter>
